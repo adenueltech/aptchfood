@@ -1,8 +1,5 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
-const toast = document.querySelector(".toast");
-let toastTimer;
-
 menuToggle.addEventListener("click", () => {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!isOpen));
@@ -20,10 +17,10 @@ navLinks.querySelectorAll("a").forEach((link) => {
 
 document.querySelectorAll(".menu-order").forEach((button) => {
   button.addEventListener("click", () => {
-    toast.textContent = `${button.dataset.item} added to your order!`;
-    toast.classList.add("is-visible");
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 2800);
+    const cart = JSON.parse(localStorage.getItem("aptech-cart") || "{}");
+    cart[button.dataset.item] = (cart[button.dataset.item] || 0) + 1;
+    localStorage.setItem("aptech-cart", JSON.stringify(cart));
+    window.location.href = "order.html";
   });
 });
 
