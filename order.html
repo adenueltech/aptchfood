@@ -92,13 +92,49 @@
               <input id="customer-name" name="name" type="text" autocomplete="name" placeholder="e.g. Alex" required>
               <label for="customer-phone">Phone number</label>
               <input id="customer-phone" name="phone" type="tel" autocomplete="tel" placeholder="So we can reach you" required>
-              <button class="button place-order" type="submit" disabled>Continue with your order <span aria-hidden="true">↗</span></button>
+
+              <fieldset class="payment-choice">
+                <legend>Payment</legend>
+                <label class="payment-option is-selected">
+                  <input type="radio" name="payment" value="card" checked>
+                  <span class="payment-option-body">
+                    <strong>Pay online by card</strong>
+                    <small>Card is charged now and your order is confirmed straight away.</small>
+                  </span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="counter">
+                  <span class="payment-option-body">
+                    <strong>Pay at the counter</strong>
+                    <small>Cash or card when you pick up. Your order is still reserved.</small>
+                  </span>
+                </label>
+                <div class="card-fields" data-card-fields hidden>
+                  <label for="card-number">Card number</label>
+                  <input id="card-number" name="card-number" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242">
+                  <div class="card-row">
+                    <div>
+                      <label for="card-expiry">Expiry</label>
+                      <input id="card-expiry" name="card-expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY">
+                    </div>
+                    <div>
+                      <label for="card-cvc">CVC</label>
+                      <input id="card-cvc" name="card-cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123">
+                    </div>
+                  </div>
+                  <p class="card-note">Demo checkout — no real charge is made and card details are never stored.</p>
+                </div>
+              </fieldset>
+
+              <button class="button place-order" type="submit" disabled>
+                <span data-order-button-label>Pay &amp; place order</span>
+                <span aria-hidden="true">↗</span>
+              </button>
             </form>
             <p class="order-disclaimer">Demo only: your delivery details stay in this page. No rider is contacted and no order or payment is sent.</p>
           </section>
         </aside>
       </div>
-      <div class="order-confirmation" role="status" aria-live="polite" hidden></div>
     </div>
   </main>
 
