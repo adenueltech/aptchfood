@@ -165,6 +165,23 @@ h1, h2, h3, p { margin-top: 0; }
 .order-form label { margin-top: 4px; font-size: 10px; font-weight: 700; }
 .order-form input { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; outline: none; color: var(--ink); background: white; font: inherit; font-size: 11px; }
 .order-form input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(244, 117, 33, .12); }
+.delivery-options { display: grid; gap: 8px; min-width: 0; margin: 0 0 5px; padding: 0; border: 0; }
+.delivery-options legend { margin-bottom: 9px; padding: 0; font-size: 10px; font-weight: 700; }
+.order-form .delivery-option { position: relative; display: flex; align-items: center; gap: 11px; min-height: 62px; margin: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fff; cursor: pointer; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.delivery-option:has(input:checked) { border-color: #f5b37e; background: #fffaf5; box-shadow: 0 0 0 2px rgba(244, 117, 33, .07); }
+.delivery-option:has(input:focus-visible) { outline: 3px solid rgba(244, 117, 33, .28); outline-offset: 2px; }
+.order-form .delivery-option input { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; opacity: 0; }
+.delivery-option-copy { display: grid; flex: 1; gap: 4px; }
+.delivery-option-title { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; }
+.delivery-icon { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 7px; color: var(--orange-dark); background: #fff0df; font-size: 14px; }
+.pickup-icon { font-size: 18px; }
+.delivery-option-detail { color: var(--muted); font-size: 9px; font-weight: 400; }
+.delivery-option-check { display: grid; width: 17px; height: 17px; flex: 0 0 auto; place-items: center; border: 1px solid #ded8d0; border-radius: 50%; }
+.delivery-option:has(input:checked) .delivery-option-check { border-color: var(--orange); background: var(--orange); }
+.delivery-option:has(input:checked) .delivery-option-check::after { width: 5px; height: 5px; border-radius: 50%; background: white; content: ""; }
+.delivery-address-field { display: grid; gap: 6px; }
+.delivery-address-field[hidden] { display: none; }
+.order-form .field-hint { color: var(--muted); font-size: 9px; line-height: 1.5; }
 .place-order { width: 100%; min-height: 45px; margin-top: 7px; gap: 10px; cursor: pointer; font-size: 11px; }
 .place-order:disabled { cursor: not-allowed; opacity: .5; box-shadow: none; }
 .order-disclaimer { margin: 13px 0 0; color: var(--muted); font-size: 9px; line-height: 1.6; }

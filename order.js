@@ -9,7 +9,17 @@ const cartCount = document.querySelector(".cart-count");
 const orderButton = document.querySelector(".place-order");
 const orderForm = document.querySelector(".order-form");
 const confirmation = document.querySelector(".order-confirmation");
+const deliveryAddressField = document.querySelector(".delivery-address-field");
+const deliveryAddress = document.querySelector("#delivery-address");
 const cart = JSON.parse(localStorage.getItem("aptech-cart") || "{}");
+
+function updateFulfilmentFields() {
+  const isDelivery = orderForm.elements.fulfilment.value === "delivery";
+  deliveryAddressField.hidden = !isDelivery;
+  deliveryAddress.required = isDelivery;
+}
+
+// jjjjjjj
 
 function saveCart() {
   localStorage.setItem("aptech-cart", JSON.stringify(cart));
@@ -66,6 +76,10 @@ document.querySelectorAll("[data-add]").forEach((button) => {
   button.addEventListener("click", () => updateQuantity(button.dataset.add, 1));
 });
 
+orderForm.querySelectorAll('input[name="fulfilment"]').forEach((option) => {
+  option.addEventListener("change", updateFulfilmentFields);
+});
+
 orderForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!orderForm.reportValidity()) return;
@@ -75,16 +89,21 @@ orderForm.addEventListener("submit", (event) => {
     .filter(([id, quantity]) => Object.hasOwn(products, id) && quantity > 0)
     .map(([id, quantity]) => `${quantity} × ${products[id]}`);
   if (summary.length === 0) return;
+  const fulfilment = orderForm.elements.fulfilment.value;
+  const deliveryDetails = fulfilment === "delivery"
+    ? `Delivery by dispatch rider to ${deliveryAddress.value.trim()}`
+    : "You’ll pick up your order at the restaurant";
 
   confirmation.replaceChildren();
   const heading = document.createElement("h2");
   heading.textContent = `Thanks, ${customerName}!`;
   const message = document.createElement("p");
-  message.textContent = `Your order request is ready: ${summary.join(", ")}. This demo has not sent it to the restaurant.`;
+  message.textContent = `Your order request is ready: ${summary.join(", ")}. ${deliveryDetails}. This demo has not sent your order or contacted a rider.`;
   confirmation.append(heading, message);
   confirmation.hidden = false;
   confirmation.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+updateFulfilmentFields();
 renderCart();
