@@ -24,4 +24,17 @@ document.querySelectorAll(".menu-order").forEach((button) => {
   });
 });
 
+const contactForm = document.querySelector("#contact-form");
+const contactSuccess = document.querySelector("#contact-success");
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
+  const name = document.querySelector("#contact-name").value.trim();
+  contactSuccess.textContent = `Thanks, ${name}! Your message is ready. Connect this form to your inbox to send it for real.`;
+  contactSuccess.hidden = false;
+  contactForm.reset();
+});
+
 document.querySelector("#year").textContent = new Date().getFullYear();

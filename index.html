@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="theme.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -25,8 +26,8 @@
       <div class="nav-links" id="nav-links">
         <a href="#home">Home</a>
         <a href="#menu">Our menu</a>
-        <a href="about.html">About us</a>
-        <a href="#visit">Find us</a>
+        <a href="#story">Our story</a>
+        <a href="contact.html">Contact us</a>
         <a class="button button-small nav-order" href="order.html">Order now <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
@@ -114,7 +115,7 @@
           <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR TABLE IS WAITING</span>
           <h2>Good things<br>are <span>close by.</span></h2>
           <p>Pop in, bring your people, and let us take care of the delicious part.</p>
-          <a class="button button-light" href="mailto:hello@aptechfoods.com?subject=Hello%20Aptech%20Foods">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="button button-light" href="contact.html">Get in touch <span aria-hidden="true">↗</span></a>
         </div>
         <div class="visit-details">
           <div><span class="detail-icon" aria-hidden="true">⌖</span><div><strong>Come find us</strong><p>Your neighbourhood, your new favourite spot.</p></div></div>
@@ -136,5 +137,9 @@
   </footer>
 
   <div class="toast" role="status" aria-live="polite"></div>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark mode</span>
+  </button>
 </body>
 </html>
