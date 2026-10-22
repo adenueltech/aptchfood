@@ -1,0 +1,1 @@
+Aptech Foods & More is a vibrant food and dining brand dedicated to serving fresh ingredients, big flavours, and feel-good comfort food. Designed as a neighbourhood gathering spot, the brand focuses on creating a warm and welcoming experience for casual lunches, treats, and get-togethers.
